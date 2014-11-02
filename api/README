@@ -1,0 +1,26 @@
+<h1>OPA API</h1>
+
+This provides an API for <a href="http://opa.phila.gov" target="_blank">opa.phila.gov</a> by fetching their data on request, scraping it and providing it in a software-friendly format such as JSON, XML, PHP or Text.<br />
+In addition, it scrapes the tax balances for the property from the <a href="http://www.phila.gov/revenue/RealEstateTax/" target="_blank">Department of Revenue</a> web site.<br />
+Note that this is a <b>live</b> API and pulls directly from the OPA/Revenue web sites. Therefore it may not be the same data as phillyaddress.com, as phillyaddress.com is static.<br /><br />
+
+<a href="http://api.phillyaddress.com/address.txt/3222+richmond+st">Click here to see an example</a><br /><br/>
+
+<b>Usage</b><br />
+<li>http://api.phillyaddress.com/address/3222+richmond+st
+<li>http://api.phillyaddress.com/block/3200/richmond+st
+<li>http://api.phillyaddress.com/intersection/richmond+st/allegheny+ave
+<li>http://api.phillyaddress.com/account/882665100
+<li>http://api.phillyaddress.com/owner/wawa+inc
+<br /><br />
+
+<b>Formats</b><br />
+Valid Formats: json, xml, php, txt<br />
+The default format is JSON. To specify another format, include it in the action with a period in front.<br />
+To specify a callback function, include it as its own parameter, as shown below.<br />
+<li>http://api.phillyaddress.com/address.json/3222+richmond+st/callback=function_name
+<li>http://api.phillyaddress.com/block.xml/3200/richmond+st
+<li>http://api.phillyaddress.com/intersection.txt/richmond+st/allegheny+ave
+<br /><br />
+
+Created by <a href="http://timwis.com" target="_blank">Tim Wisniewski</a><br />

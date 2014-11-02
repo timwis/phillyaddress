@@ -1,0 +1,2 @@
+# PhillyAddress
+This repository contains the source code for PhillyAddress, an application that has been deprecated. See [phillyaddress.com](http://phillyaddress.com) for more details on that. In the meantime, let the code be free.

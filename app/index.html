@@ -1,0 +1,224 @@
+<!--
+Philly Address Mobile Application
+Created by Tim Wisniewski (www.timwis.com)
+
+A mobile interface to search Philadelphia's Office of Property Assessment & Revenue Department property searches
+//-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Philly Address</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<meta charset="utf-8">
+		<meta name="description" content="A mobile interface to search Philadelphia's Office of Property Assessment & Revenue Department property searches">
+		<meta name="keywords" content="Philadelphia,OPA,BRT,Property Search,Philly Address,PhillyAddress">
+
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+		<link rel="stylesheet" href="styles.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+		<script src="index.js"></script>
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-27922334-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+	<body>
+
+<!-- Home -->
+<div data-role="page" id="home">
+
+	<div data-role="header">
+		<h1>Philly Address</h1>
+	</div>
+
+	<div data-role="content">	
+		<ul data-role="listview">
+			<li><a href="#search-address">Search by Address</a></li>
+			<li><a href="#search-block">Search by Block</a></li>
+			<li><a href="#search-intersection">Search by Intersection</a></li>
+			<li><a href="#search-account">Search by Account Number</a></li>
+			<li><a href="#search-owner">Search by Owner</a></li>
+		</ul>
+	</div>
+
+	<div data-role="footer">
+		<h1>Created by <a href="http://timwis.com">Tim Wisniewski</a></h1>
+	</div>
+
+</div>
+
+
+<!-- Search by Address -->
+<div data-role="page" id="search-address" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Address</h1>
+	</div>
+
+	<div data-role="content">
+		<form data-ajax="false">
+			<label for="address" class="ui-hidden-accessible">Address:</label>
+			<input type="text" name="address" id="address" value="" placeholder="Address"/>
+			<button type="submit" data-theme="a">Search</button>
+		</form>
+	</div>
+
+</div>
+
+<!-- Search by Block -->
+<div data-role="page" id="search-block" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Block</h1>
+	</div>
+
+	<div data-role="content">
+		<form data-ajax="false">
+			<label for="number" class="ui-hidden-accessible">Number:</label>
+			<input type="text" name="number" id="number" value="" placeholder="Number"/>
+			<label for="street" class="ui-hidden-accessible">Street:</label>
+			<input type="text" name="street" id="street" value="" placeholder="Street"/>
+			<button type="submit" data-theme="a">Search</button>
+		</form>
+	</div>
+
+</div>
+
+<!-- Search by Intersection -->
+<div data-role="page" id="search-intersection" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Intersection</h1>
+	</div>
+
+	<div data-role="content">
+		<form data-ajax="false">
+			<label for="street1" class="ui-hidden-accessible">Street 1</label>
+			<input type="text" name="street1" id="street1" value="" placeholder="Street 1"/>
+			<label for="street2" class="ui-hidden-accessible">Street 2:</label>
+			<input type="text" name="street2" id="street2" value="" placeholder="Street 2"/>
+			<button type="submit" data-theme="a">Search</button>
+		</form>
+	</div>
+
+</div>
+
+<!-- Search by Account Number -->
+<div data-role="page" id="search-account" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Account Number</h1>
+	</div>
+
+	<div data-role="content">
+		<form data-ajax="false">
+			<label for="account" class="ui-hidden-accessible">Account Number:</label>
+			<input type="text" name="account" id="account" value="" placeholder="Account Number"/>
+			<button type="submit" data-theme="a">Search</button>
+		</form>
+	</div>
+
+</div>
+
+<!-- Search by Owner -->
+<div data-role="page" id="search-owner" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Owner</h1>
+	</div>
+
+	<div data-role="content">
+		Try different combinations, e.g. <b>Doe John</b> and <b>John Doe</b>
+		<form data-ajax="false">
+			<label for="owner" class="ui-hidden-accessible">Owner:</label>
+			<input type="text" name="owner" id="owner" value="" placeholder="Owner"/>
+			<button type="submit" data-theme="a">Search</button>
+		</form>
+	</div>
+
+</div>
+
+<!-- Results - Single Property -->
+<div data-role="page" id="results-property" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1 id="address">Search Results</h1>
+	</div>
+
+	<div data-role="content">
+		<div data-role="collapsible-set">
+			<div data-role="collapsible" data-collapsed="false" id="account_information">
+			<h3>Account Information</h3>
+			<dl title="Account Information">
+			</dl>
+			</div>
+
+			<div data-role="collapsible" id="account_details">
+			<h3>Account Details</h3>
+			<dl title="Account Details">
+			</dl>
+			</div>
+
+			<div data-role="collapsible" id="valuation_details">
+			<h3>Valuation Details</h3>
+			<table>
+			</table>
+			</div>
+
+			<div data-role="collapsible" id="tax_balances">
+			<h3>Tax Balances</h3>
+			<table>
+			</table>
+			</div>
+
+			<div data-role="collapsible" id="map">
+			<h3>Map</h3>
+			<a><img/></a>
+			</div>
+
+			<div data-role="collapsible" id="axcel">
+			<h3>More Information</h3>
+			For more information on this property, PhillyAddress recommends contacting Axcel Research Group, experts at real estate research.<br>
+			<a href="http://axcelresearch.com/searches/" target="_blank">www.axcelresearch.com</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- Results - Multiple Properties -->
+<div data-role="page" id="results-properties" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Search Results</h1>
+	</div>
+
+	<div data-role="content">
+		<ul data-role="listview">
+		</ul>
+	</div>
+
+</div>
+
+<!-- Error -->
+<div data-role="page" id="error" data-add-back-btn="true">
+
+	<div data-role="header">
+		<h1>Error</h1>
+	</div>
+
+	<div data-role="content">
+	</div>
+
+</div>
+
+	</body>
+</html>
