@@ -208,5 +208,5 @@ if($url) {
 }
 else {
 	// Otherwise display homepage
-	printfile('README');
+	printfile('index.html');
 }
